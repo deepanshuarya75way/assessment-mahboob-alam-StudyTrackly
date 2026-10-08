@@ -180,7 +180,7 @@ router.get("/google/callback", async (req, res, next) => {
       const existingDevice = user.activeSession.deviceName || "Another Device";
       return res.redirect(
         302,
-        `${frontend}/auth/callback#takeover_taken=${encodeURIComponent(
+        `${front}/auth/callback#takeover_taken=${encodeURIComponent(
           takenoverToken
         )}&existing_device=${encodeURIComponent(
           existingDevice
@@ -222,7 +222,7 @@ router.get("/google/callback", async (req, res, next) => {
     console.log()
     res.redirect(
       302,
-      `${frontend}/auth/callback#token=${encodeURIComponent(token)}&user=${userJson}`
+      `${env.FRONTEND_URL}/auth/callback#token=${encodeURIComponent(token)}&user=${userJson}`
     );
   } catch (e) {
     console.error("Google OAuth callback error", e);
