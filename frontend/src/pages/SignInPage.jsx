@@ -17,6 +17,8 @@ const errorMessages = {
   missing_token: "Sign-in was incomplete. Try again.",
   invalid_callback: "Could not complete sign-in. Try again.",
   access_denied: "Sign-in was cancelled.",
+  // error code
+  session_taken_over: "Your session was ended bcz this account was logged into on another device."
 };
 
 export function SignInPage() {

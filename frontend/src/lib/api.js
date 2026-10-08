@@ -24,7 +24,11 @@ apiClient.interceptors.response.use(
   (res) => res,
   async (error) => {
     if (error.response?.status === 401) {
+      const isTakenOver = error.response?.data?.error === "session_taken_over";
       clearAuth();
+      if(isTakenOver && typeof window !== "undefined" && !window.location.pathname.startsWith("/signin")){
+        window.location.href = "/signin?error=session_taken_over";
+      }
       return Promise.reject(error);
     }
     return Promise.reject(error);
